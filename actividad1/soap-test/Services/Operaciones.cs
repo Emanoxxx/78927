@@ -12,5 +12,8 @@ namespace WSDL.operaciones
         public string Mostrar(int id){
             return "x";
         }
+        public string Login(string usr, string psw){
+            return "Hola "+usr;
+        }
     }
 }
