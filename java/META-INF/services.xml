@@ -1,0 +1,12 @@
+<service name="Calculadora">
+    <description>Super Calculadora</description>
+    <!--Indicar la clase de arranque-->
+    <parameter name="ServiceClass">Calculadora</parameter>
+    <!-- Exponer las operaciones -->
+    <operation name="suma">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <operation name="resta">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+</service>
