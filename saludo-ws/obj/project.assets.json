@@ -922,11 +922,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\emano\\Documents\\Repositorios\\78927\\soap-test\\soap-test.csproj",
+      "projectUniqueName": "C:\\Users\\emano\\Documents\\Repositorios\\78927\\saludo-ws\\soap-test.csproj",
       "projectName": "soap-test",
-      "projectPath": "C:\\Users\\emano\\Documents\\Repositorios\\78927\\soap-test\\soap-test.csproj",
+      "projectPath": "C:\\Users\\emano\\Documents\\Repositorios\\78927\\saludo-ws\\soap-test.csproj",
       "packagesPath": "C:\\Users\\emano\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\emano\\Documents\\Repositorios\\78927\\soap-test\\obj\\",
+      "outputPath": "C:\\Users\\emano\\Documents\\Repositorios\\78927\\saludo-ws\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\emano\\AppData\\Roaming\\NuGet\\NuGet.Config"
