@@ -4,6 +4,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.*;
@@ -38,14 +39,17 @@ public class SaludosEndPoint {
 
         return respuesta;
     }
-/*
+
     @PayloadRoot(namespace = "https://t4is.uv.mx/saludos", localPart = "BuscarSaludosRequest")
     @ResponsePayload
     public BuscarSaludosResponse buscar() {
         BuscarSaludosResponse respuesta = new BuscarSaludosResponse();
-        for (Saludo saludo : saludos) {
-            respuesta.getSaludo().add(saludo);
-        }
+        isaludadores.findAll().forEach((saludo) ->{
+            BuscarSaludosResponse.Saludo sal=new BuscarSaludosResponse.Saludo();
+            sal.setId(saludo.getId());
+            sal.setNombre(saludo.getNombre());
+            respuesta.getSaludo().add(sal);
+        });
         return respuesta;
     }
 
@@ -55,40 +59,34 @@ public class SaludosEndPoint {
         ModificarSaludoResponse respuesta = new ModificarSaludoResponse();
         int id = peticion.getId();
         String nombre = peticion.getNombre();
-
-        Saludo newSaludo = new Saludo();
-        newSaludo.setId(id);
-        newSaludo.setNombre(nombre);
-
-        saludos.set(id, newSaludo);
-
+        Optional<Saludadores> saludofound=isaludadores.findById(id);
+        if(saludofound.isPresent()){
+            Saludadores saludo =saludofound.get();
+            saludo.setNombre(nombre);
+            isaludadores.save(saludo);
+        }else{  
+            respuesta.setRespuesta(false);
+            return respuesta;
+        }
         respuesta.setRespuesta(true);
         return respuesta;
     }
-
+    
     @PayloadRoot(namespace = "https://t4is.uv.mx/saludos", localPart = "BorrarSaludoRequest")
     @ResponsePayload
     public BorrarSaludoResponse borrar(@RequestPayload BorrarSaludoRequest peticion) {
         BorrarSaludoResponse respuesta = new BorrarSaludoResponse();
-
         int id = peticion.getId();
-
-        int position = -1;
-
-        for(int i=0; i<saludos.size(); i++) {
-            if (saludos.get(i).getId() == id) {
-                position = i;
-            }
-        }
-
-        if(position != -1) {
-            saludos.remove(position);
-            respuesta.setRespuesta(true);
-        } else {
+        Optional<Saludadores> saludofound=isaludadores.findById(id);
+        if(saludofound.isPresent()){
+            Saludadores saludo =saludofound.get();
+            isaludadores.delete(saludo);
+        }else{  
             respuesta.setRespuesta(false);
+            return respuesta;
         }
-
+        respuesta.setRespuesta(true);
         return respuesta;
     }
-    */
+    
 }
