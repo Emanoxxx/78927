@@ -1,0 +1,11 @@
+FROM uno
+WORKDIR /app
+EXPOSE 8080
+CMD ["/app/script.sh"]
+ADD target/SaludosBd-0.0.1-SNAPSHOT.jar /app
+RUN apt-get update && apt-get install -y mariadb-server
+ADD script.sh /app/script.sh
+ADD script.sql /app/script.sql
+RUN chmod 755 /app/script.sql
+RUN chmod 755 /app/script.sh
+RUN /etc/init.d/mysql start; mysql < /app/script.sql

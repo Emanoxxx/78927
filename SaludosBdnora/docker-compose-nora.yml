@@ -1,0 +1,31 @@
+version: "3.3"
+services:
+    nora:
+        image: tres
+        networks:
+            - microservicios
+        ports:
+            - 8080:8080
+        environment:
+            MYSQL_HOST: db
+        volumes: 
+            - ./app:/app
+        command: ["java", "-jar", "/app/SaludosBd-0.0.1-SNAPSHOT.jar"]
+        links:
+            - db
+        depends_on:
+            - db
+        restart: always
+    db:
+        image: mariadb
+        networks:
+            - microservicios
+        ports:
+            - 3306:3306
+        environment: 
+            MARIADB_ROOT_PASSWORD: 123456
+        volumes:
+            - ./scripts:/docker-entrypoint-initdb.d
+            - ./datos:/var/lib/mysql
+networks:
+    microservicios:
