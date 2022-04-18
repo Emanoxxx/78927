@@ -1,0 +1,33 @@
+{
+  "name": "nora-notes",
+  "version": "1.0.0",
+  "description": "Notas y agenda",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "emanoxxx",
+  "license": "ISC",
+  "keywords": [
+    "SOAP",
+    "node.js",
+    "express",
+    "SOAP-server",
+    "SOAP-client",
+    "server",
+    "client",
+    "web",
+    "service"
+  ],
+  "dependencies": {
+    "@prisma/client": "^3.12.0",
+    "express": "^4.17.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
+    "soap": "^0.43.0"
+  },
+  "devDependencies": {
+    "prisma": "^3.12.0"
+  }
+}

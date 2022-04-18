@@ -1,0 +1,39 @@
+version: '3.3'
+services:
+  nora:
+        image: emanoxxx/noranotes
+        networks:
+            - microservicios
+        ports:
+            - 8000:8000
+        environment:
+            MYSQL_HOST: db
+        command: 
+          npx prisma db push --preview-feature
+          npm start
+        links:
+            - db
+        depends_on:
+            - db
+        restart: always
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: 'NoraNotes'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'emanoxxx'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: '1234'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: '1234'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+networks:
+    microservicios:
