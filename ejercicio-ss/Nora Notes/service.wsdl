@@ -227,7 +227,7 @@
   <!-- SERVICE:  -->
   <wsdl:service name="NoraNotesService">
     <wsdl:port name="NoraNotesServiceSoapPort" binding="tns:NoraNotesServiceSoapBinding">
-      <soap:address location="http://localhost:8000/noranotes"/>
+      <soap:address location="http://emanoxxx.com:8000/noranotes"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
