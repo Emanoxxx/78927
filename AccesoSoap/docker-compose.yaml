@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  clientePHP:
+    image: php:apache
+    volumes:
+    - ./index.php:/var/www/html/index.php
+    - ./src:/var/www/html/src
+    - ./soap.ini:/usr/local/etc/php/conf.d/soap.ini        
+    - ./soap.so:/usr/local//lib/php/extensions/no-debug-non-zts-20210902/soap.so 
+    ports:
+    - 80:80

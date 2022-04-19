@@ -1,0 +1,19 @@
+.portfolio{
+    position: fixed;
+    top: 0px;
+    display: flex;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    transition: all .5s;
+    background-color: var(--color-Portfolio);
+    -webkit-box-shadow: inset 4px 4px 15px 0px #000000, -50px 5px 15px 21px rgb(0 0 0 / 0%);
+    box-shadow: inset 4px 4px 15px 0px #000000, -50px 5px 15px 21px rgb(0 0 0 / 0%);
+}
+.portfolio .card{
+    width: 20%;
+    height: 70%;
+}
